@@ -1,23 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
+import ComponentA from './components/ComponentA';
+import ComponentB from './components/ComponentB';
+import { MainContext } from './context/Context';
+import React, {useState} from 'react'
+import MainContextProvider from './context/Context';
+import { SecondContextProvider } from './context/SecondContext';
 
 function App() {
-  return (
+   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MainContextProvider>   
+          <SecondContextProvider>
+              <ComponentA  ></ComponentA>     
+          </SecondContextProvider>
+               <ComponentB></ComponentB>
+      </MainContextProvider>
+      
     </div>
   );
 }
